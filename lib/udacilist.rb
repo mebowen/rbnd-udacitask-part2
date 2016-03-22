@@ -1,8 +1,8 @@
 class UdaciList
-  attr_reader :title, :items
+  attr_reader :title, :items 
 
   def initialize(options={})
-    @title = options[:title]
+    @title = options[:title] || "Untitled List"
     @items = []
   end
   
@@ -29,6 +29,17 @@ class UdaciList
     end
   end
   
+  def filter(item_type)
+    @items_to_display = @items.select { |item| item.type == item_type }
+    if @items_to_display.empty?
+      puts "There are no #{item_type} items."
+    else
+      @items_to_display.each do |item|
+        puts "#{item.details}"
+      end
+    end
+  end
+  
   def delete(index)
     if index >= 0 and index < items.length 
       @items.delete_at(index - 1)
@@ -42,7 +53,8 @@ class UdaciList
     puts @title
     puts "-" * @title.length
     @items.each_with_index do |item, position|
-      puts "#{position + 1}) #{item.details}"
+      puts "#{position + 1} #{item.details}"
     end
   end
+
 end
