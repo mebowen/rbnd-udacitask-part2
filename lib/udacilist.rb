@@ -1,9 +1,9 @@
 class UdaciList
-  attr_reader :title, :items 
+  attr_reader :title, :items
 
   def initialize(options={})
     @title = options[:title] || "Untitled List"
-    @items = []
+    @items ||= []
   end
   
   def add(type, description, options={})
@@ -28,18 +28,7 @@ class UdaciList
       raise UdaciListErrors::InvalidItemType
     end
   end
-  
-  def filter(item_type)
-    @items_to_display = @items.select { |item| item.type == item_type }
-    if @items_to_display.empty?
-      puts "There are no #{item_type} items."
-    else
-      @items_to_display.each do |item|
-        puts "#{item.details}"
-      end
-    end
-  end
-  
+
   def delete(index)
     if index >= 0 and index < items.length 
       @items.delete_at(index - 1)
@@ -56,5 +45,28 @@ class UdaciList
       puts "#{position + 1} #{item.details}"
     end
   end
-
+  
+  def filter(item_type)
+    @items_to_display = @items.select { |item| item.type == item_type }
+    if @items_to_display.empty?
+      puts "There are no #{item_type} items."
+    else
+      @items_to_display.each do |item|
+        puts "#{item.details}"
+      end
+    end
+  end
+  
+  def type
+    case self.class.name         
+    when "EventItem"
+      "event: "
+    when "TodoItem"
+      "to do: "
+    when "LinkItem"
+      "link: "
+    else
+      "unknown item type: "
+    end
+  end
 end
