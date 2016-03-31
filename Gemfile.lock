@@ -1,0 +1,22 @@
+GIT
+  remote: https://github.com/mebowen/table_print.git
+  revision: 9f64f5d33ff256fd62b82537a8cadcc49e5a6ddb
+  specs:
+    table_print (1.5.6)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    chronic (0.10.2)
+    colorize (0.7.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  chronic (= 0.10.2)
+  colorize (= 0.7.7)
+  table_print!
+
+BUNDLED WITH
+   1.11.2
