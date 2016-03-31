@@ -1,13 +1,40 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
+I used table_print because I wanted to be able to print list details in a table. 
+I modified table_print by sourcing a repo I forked.
+I did this because table_print prints the string "Method Missing" whenever
+the expected content for a column is unavailable. In this project, not
+all events have the same details, so I needed those spaces to just be 
+empty instead of saying "Method Missing." 
+
 2. Describe the 2 features you added to the project.
-  a) Feature 1...
-  b) Feature 2...
+  a) I added a filter_by_priority method for todo items 
+  b) I added a filter_by_due_date method for todo items 
+
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?
+I have been working on this project slowly over the last two weeks.
+I have been reading a lot about modules lately, so that part was pretty easy
+and gems were more challenging. 
+
 2. What was the most rewarding challenge you conquered?
+Modifying table_print was very exciting and rewarding. It took me a while and 
+a bit of research to determine the best method for doing so, and I felt very
+excited when my modifications worked the way I wanted them to. 
+
 3. What two additional features did you build? Why?
+I added a filter_by_priority method for todo items to enable the user to prioritize their tasks.
+I added a filter_by_due_date method for todo items for the same reason. 
+These two features seemed like the most intuitive and obvious features a user would desire. 
+
+
 4. Where do you still have room to grow?
+I know it would have been MUCH more challenging to build this project from
+scratch, so generally, I know I still have some room to grow as far as 
+creating classes and writing class methods is concerned. I also feel 
+uncertain about whether or not my code could still stand to be refactored,
+and sometimes I am uncertain about whether or not the variables I create
+in methods should be instance variables. 
