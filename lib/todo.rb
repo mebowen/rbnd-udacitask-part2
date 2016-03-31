@@ -9,6 +9,23 @@ class TodoItem
     @priority = options[:priority]
   end
   
+  def priority_order
+    case priority
+      when "high"
+        1
+      when "medium"
+        2
+      when "low"
+        3
+      else
+        4
+    end
+  end
+  
+  def due_date
+    @due = self.due
+  end
+    
   def details
     format_type + 
     format_description(@description) + 
