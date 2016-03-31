@@ -47,26 +47,33 @@ class UdaciList
   end
   
   def filter(item_type)
-    @items_to_display = @items.select { |item| item.type == item_type }
-    if @items_to_display.empty?
+    items_to_display = @items.select { |item| item.type == item_type }
+    if items_to_display.empty?
       puts "There are no #{item_type} items."
     else
-      @items_to_display.each do |item|
+      items_to_display.each do |item|
         puts "#{item.details}"
       end
     end
   end
   
-  def type
-    case self.class.name         
-    when "EventItem"
-      "event: "
-    when "TodoItem"
-      "to do: "
-    when "LinkItem"
-      "link: "
-    else
-      "unknown item type: "
+  def filter_by_priority
+    todo_items = @items.select {|item| item.type == "todo"}
+    items_by_priority = todo_items.sort_by { |item| item.priority_order}
+    items_by_priority.each do |item|
+      puts "#{item.details}"
     end
-  end
+  end 
+
+  def filter_by_due_date
+    todo_items = @items.select {|item| item.type == "todo" && !item.due_date.nil?}
+    todo_items_without_due_date = @items.select {|item| item.type == "todo" && item.due_date.nil?}
+    items_with_due_date = todo_items.sort_by { |item| item.due_date.to_s}
+    items_by_due_date = items_with_due_date + todo_items_without_due_date
+    items_by_due_date.each do |item|
+      puts "#{item.details}"
+    end
+  end 
+  
 end
+
